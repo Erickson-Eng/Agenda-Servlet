@@ -19,7 +19,7 @@ public class UserRequest {
             this.username = username;
         }
         else{
-            throw new IllegalArgumentException("Username must contain between 4 and 10 characters.");
+            throw new IllegalArgumentException("Username must contain between 4 and 20 characters.");
         }
 
     }

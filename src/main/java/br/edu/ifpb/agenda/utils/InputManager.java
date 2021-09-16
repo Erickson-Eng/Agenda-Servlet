@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class InputManager {
 
     public static boolean validateUsername( String name){
-        return name.matches("[a-z]{4,10}");
+        return name.matches("[a-z]{4,20}");
     }
 
     public static boolean validatePassword(String password){

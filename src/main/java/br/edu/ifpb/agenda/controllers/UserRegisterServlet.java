@@ -28,9 +28,9 @@ public class UserRegisterServlet extends HttpServlet {
         userRequest.setUserPassword(request.getParameter("password"));
         try {
             userDAO.save(userRequest);
-            response.sendRedirect("/agenda/login");
+            response.sendRedirect("/agenda");
         } catch (Exception e){
-            response.sendRedirect("/register");
+            response.sendRedirect("/agenda/register");
         }
 
     }
