@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -15,4 +18,6 @@ public class UserResponse {
     private String username;
     private String userPassword;
     private String email;
+
+    private List<ContactResponse> responseList = new ArrayList<>();
 }

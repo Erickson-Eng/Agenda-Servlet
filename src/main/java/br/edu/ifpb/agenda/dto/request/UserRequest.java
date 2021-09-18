@@ -3,6 +3,9 @@ package br.edu.ifpb.agenda.dto.request;
 import br.edu.ifpb.agenda.utils.InputManager;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @EqualsAndHashCode
 @ToString
 @Getter
@@ -13,6 +16,8 @@ public class UserRequest {
     private String username;
     private String userPassword;
     private String email;
+
+    private List<ContactRequest> contactRequestList = new ArrayList<>();
 
     public void setUsername(String username) {
         if (InputManager.validateUsername(username)){
