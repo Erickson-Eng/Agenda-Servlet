@@ -11,7 +11,7 @@ import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-09-19T00:23:10-0300",
+    date = "2021-09-19T01:04:04-0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.12 (Oracle Corporation)"
 )
 public class ContactMapperImpl implements ContactMapper {
@@ -49,6 +49,23 @@ public class ContactMapperImpl implements ContactMapper {
         contactResponse.rg( entity.getRg() );
 
         return contactResponse.build();
+    }
+
+    @Override
+    public Contact dtoToModel(ContactResponse response) {
+        if ( response == null ) {
+            return null;
+        }
+
+        Contact contact = new Contact();
+
+        contact.setUser( userResponseToUser( response.getUserResponse() ) );
+        contact.setId( response.getId() );
+        contact.setName( response.getName() );
+        contact.setCpf( response.getCpf() );
+        contact.setRg( response.getRg() );
+
+        return contact;
     }
 
     protected User userResponseToUser(UserResponse userResponse) {

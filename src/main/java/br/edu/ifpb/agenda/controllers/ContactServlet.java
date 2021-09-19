@@ -29,4 +29,12 @@ public class ContactServlet extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("/contact.jsp");
         rd.forward(request,response);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String userId = req.getParameter("userId");
+        String contactDelete = req.getParameter("contactId");
+        contactDAO.delete(Integer.parseInt(contactDelete));
+        resp.sendRedirect("/agenda/contact?userId="+userId);
+    }
 }

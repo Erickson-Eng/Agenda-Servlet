@@ -41,4 +41,19 @@ public class ContactDAO {
                 .map(contactMapper.INSTANCE::toDTO)
                 .collect(Collectors.toList());
     }
+
+    public ContactResponse findById(Integer id){
+        String consult = "select c from Contact c where c.id = :id";
+        TypedQuery<Contact> query = em.createQuery(consult, Contact.class).setParameter("id",id);
+        return contactMapper.INSTANCE.toDTO(query.getSingleResult());
+    }
+
+    public void delete(Integer id) {
+        String consult = "select c from Contact c where c.id = :id";
+        TypedQuery<Contact> query = em.createQuery(consult, Contact.class).setParameter("id",id);
+        Contact contact = query.getSingleResult();
+        em.getTransaction().begin();
+        em.remove(contact);
+        em.getTransaction().commit();
+    }
 }

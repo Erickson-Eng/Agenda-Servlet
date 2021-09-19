@@ -17,4 +17,7 @@ public interface ContactMapper {
 
     @Mapping(target = "userResponse", source = "user")
     ContactResponse toDTO(Contact entity);
+
+    @Mapping(target = "user", source = "userResponse")
+    Contact dtoToModel(ContactResponse response);
 }
