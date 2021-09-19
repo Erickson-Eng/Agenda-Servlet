@@ -59,11 +59,12 @@
                     </tbody>
                 </table>
                 </c:forEach>
-                <div>
-                    <button type="button" class="btn btn-light"><a href="/agenda/contact?userId=${user.id}">Voltar</a></button>
-                    <button type="button" class="btn btn-dark"><a href="#">Cadastrar</a></button>
-                </div>
             </div>
+
+        </div>
+        <div>
+            <button type="button" class="btn btn-light"><a href="/agenda/contact?userId=${user.id}">Voltar</a></button>
+            <button type="button" class="btn btn-dark"><a href="/agenda/newAddress?userId=${user.id}&contactId=${contact.id}">Cadastrar</a></button>
         </div>
     </div>
 </body>
