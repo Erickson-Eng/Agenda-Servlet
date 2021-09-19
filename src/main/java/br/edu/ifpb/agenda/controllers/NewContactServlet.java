@@ -61,7 +61,6 @@ public class NewContactServlet extends HttpServlet {
         addressRequest.setCep(cep);
         addressRequest.setCity(city);
         addressRequest.setState(state);
-        contactDAO.save(contactRequest);
         addressDAO.save(addressRequest);
         response.sendRedirect("/agenda/contact?userId="+userResponse.getId());
     }
