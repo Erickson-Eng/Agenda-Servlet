@@ -15,6 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class ContactRequest {
+    @Setter
+    private Integer id;
     private String name;
     private String cpf;
     private String rg;

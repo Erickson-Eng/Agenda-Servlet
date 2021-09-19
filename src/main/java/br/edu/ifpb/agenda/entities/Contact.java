@@ -1,5 +1,6 @@
 package br.edu.ifpb.agenda.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -26,6 +27,7 @@ public class Contact implements Serializable {
 
     @ManyToOne
     private User user;
+    @JsonIgnore
     @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
     private List<Address> addressList = new ArrayList<>();
 }

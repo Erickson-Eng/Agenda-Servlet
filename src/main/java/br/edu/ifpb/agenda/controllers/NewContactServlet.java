@@ -5,12 +5,14 @@ import br.edu.ifpb.agenda.dao.ContactDAO;
 import br.edu.ifpb.agenda.dao.UserDAO;
 import br.edu.ifpb.agenda.dto.request.AddressRequest;
 import br.edu.ifpb.agenda.dto.request.ContactRequest;
+import br.edu.ifpb.agenda.dto.response.ContactResponse;
 import br.edu.ifpb.agenda.dto.response.UserResponse;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "NewContactServlet", value = "/newContact")
 public class NewContactServlet extends HttpServlet {
@@ -61,6 +63,7 @@ public class NewContactServlet extends HttpServlet {
         addressRequest.setCep(cep);
         addressRequest.setCity(city);
         addressRequest.setState(state);
+        //save
         addressDAO.save(addressRequest);
         response.sendRedirect("/agenda/contact?userId="+userResponse.getId());
     }

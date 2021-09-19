@@ -1,5 +1,6 @@
 package br.edu.ifpb.agenda.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -24,7 +25,7 @@ public class Address implements Serializable {
     private String city;
     private String state;
 
-    @JoinColumn
+
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     private Contact contact;
 }
