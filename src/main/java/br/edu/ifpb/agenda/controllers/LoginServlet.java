@@ -25,11 +25,11 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        UserResponse userEmail;
+        UserResponse userResponse;
         try{
-            userEmail = dao.authorizeAccessByEmail(login, password);
-            if (userEmail.getId() != null){
-                response.sendRedirect("/agenda/contact?userId="+userEmail.getId());
+            userResponse = dao.authorizeAccessByEmail(login, password);
+            if (userResponse.getId() != null){
+                response.sendRedirect("/agenda/contact?userId="+userResponse.getId());
             }
         }catch (Exception e){
             response.sendRedirect("/agenda/");

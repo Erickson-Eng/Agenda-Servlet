@@ -25,7 +25,7 @@
                 <label for="mail">Login:</label>
                 <input type="text" class="form-control" id="mail" name="login" placeholder="Insira o email">
                 <label for="pwd">Password: </label>
-                <input type="password" class="form-control" id="pwd" name="password">
+                <input type="password" class="form-control" id="pwd" name="password" placeholder="Insira a senha">
                 <button type="submit">Login</button>
             </div>
         </form>
