@@ -24,6 +24,7 @@ public class Address implements Serializable {
     private String city;
     private String state;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     private Contact contact;
 }

@@ -38,7 +38,6 @@ public class EditContactServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String userIdParametro = request.getParameter("userId");
-        System.out.println(userIdParametro);
         UserResponse user = userDAO.findById(Integer.parseInt(userIdParametro));
         String name = request.getParameter("name");
         String rg = request.getParameter("rg");
