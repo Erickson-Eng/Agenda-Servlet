@@ -43,7 +43,7 @@
                             <form action="${linkToContactDeleteServlet}" method="post">
                                 <input type="hidden" name="contactId" value="${contact.id}" />
                                 <input type="hidden" name="userId" value="${user.id}" />
-                                <input type="submit" value="excluir">
+                                <button type="button" class="btn btn-dark"><input type="submit" value="excluir"></button>
                             </form>
                         </td>
 

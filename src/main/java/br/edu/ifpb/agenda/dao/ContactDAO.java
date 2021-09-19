@@ -29,6 +29,18 @@ public class ContactDAO {
         }
     }
 
+    public void update(ContactResponse response){
+        Contact entity = contactMapper.INSTANCE.dtoToModel(response);
+        try{
+            em.getTransaction().begin();
+            em.merge(entity);
+            em.getTransaction().commit();
+        }catch (Exception e){
+            if (em.isOpen())
+                em.getTransaction().rollback();
+        }
+    }
+
     public List<ContactResponse> listAll(Integer id){
         String consult = "select c from Contact c where c.user.id = :id";
         TypedQuery<Contact> query = em

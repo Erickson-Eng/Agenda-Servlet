@@ -15,7 +15,7 @@ public class UserRegisterServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("/userRegister.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/newUser.jsp");
         rd.forward(request,response);
     }
 
