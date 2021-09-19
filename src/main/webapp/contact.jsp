@@ -17,7 +17,7 @@
 <body>
     <div class="container">
         <h2>Lista de endereços cadastrados</h2>
-        <a href="/gerenciador/newContact?userId=${user.id}">Adicionar</a>
+        <a href="/agenda/newContact?userId=${user.id}">Adicionar</a>
         <c:forEach items="${contactList}" var="contact">
             <li>
                     ${contact.name} - ${contact.rg} - ${contact.cpf}

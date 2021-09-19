@@ -1,7 +1,11 @@
 package br.edu.ifpb.agenda.dto.request;
 
+import br.edu.ifpb.agenda.dto.response.UserResponse;
 import br.edu.ifpb.agenda.utils.InputManager;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @EqualsAndHashCode
@@ -15,8 +19,9 @@ public class ContactRequest {
     private String cpf;
     private String rg;
 
-    private UserRequest userRequest;
+    private UserResponse userResponse;
 
+    private List<AddressRequest> requestList = new ArrayList<>();
     public void setName(String name) {
         if (InputManager.validateName(name)){
             this.name = name;
@@ -37,7 +42,11 @@ public class ContactRequest {
         }
     }
 
-    public void setUserRequest(UserRequest userRequest) {
-        this.userRequest = userRequest;
+    public void setUserResponse(UserResponse userResponse) {
+        this.userResponse = userResponse;
+    }
+
+    public void setRequestList(List<AddressRequest> requestList) {
+        this.requestList = requestList;
     }
 }

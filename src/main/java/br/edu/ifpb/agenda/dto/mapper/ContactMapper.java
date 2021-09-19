@@ -12,7 +12,7 @@ public interface ContactMapper {
 
     ContactMapper INSTANCE = Mappers.getMapper(ContactMapper.class);
 
-    @Mapping(target = "user", source = "userRequest")
+    @Mapping(target = "user", source = "userResponse")
     Contact toModel(ContactRequest request);
 
     @Mapping(target = "userResponse", source = "user")
