@@ -10,7 +10,7 @@ public class InputManager {
     }
 
     public static boolean validateName(String obj){
-        String expression = "^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\\s]+$";
+        String expression = "^[\\w'\\s\\-,.]+[^0-9_!¡?÷?¿/\\\\+=@#$%ˆ&*(){}|~<>;:]{2,}$";
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(obj);
         return matcher.matches();
