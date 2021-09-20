@@ -20,6 +20,4 @@ public interface ContactMapper {
 
     @Mapping(target = "user", source = "userResponse")
     Contact dtoToModel(ContactResponse response);
-
-    ContactRequest responseToRequest(ContactResponse response);
 }

@@ -57,6 +57,8 @@
                                 <button type="button" class="btn"><input type="submit" value="excluir"></button>
                             </form>
                         </td>
+
+                    <%--                        <td><a href="/agenda/deleteContact?contactId=${contact.id}&userId=${user.id}">Deletar</a></td>--%>
                     </tbody>
                 </c:forEach>
             </table>

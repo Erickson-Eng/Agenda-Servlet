@@ -9,7 +9,7 @@ import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-09-19T18:21:22-0300",
+    date = "2021-09-19T00:28:11-0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.12 (Oracle Corporation)"
 )
 public class AddressMapperImpl implements AddressMapper {
@@ -25,7 +25,6 @@ public class AddressMapperImpl implements AddressMapper {
         Address address = new Address();
 
         address.setContact( contactMapper.toModel( request.getContactRequest() ) );
-        address.setId( request.getId() );
         address.setStreet( request.getStreet() );
         address.setNumber( request.getNumber() );
         address.setComplement( request.getComplement() );

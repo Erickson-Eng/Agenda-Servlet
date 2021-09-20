@@ -12,8 +12,6 @@ import lombok.*;
 public class AddressRequest {
 
 
-    @Setter
-    private Integer id;
     private String street;
     private Integer number;
     private String complement;
@@ -22,7 +20,6 @@ public class AddressRequest {
     private String city;
     private String state;
 
-    @Setter
     private ContactRequest contactRequest;
 
     public void setStreet(String street) {
@@ -67,7 +64,7 @@ public class AddressRequest {
         }
     }
 
-//    public void setContactRequest(ContactRequest contactRequest) {
-//        this.contactRequest = contactRequest;
-//    }
+    public void setContactRequest(ContactRequest contactRequest) {
+        this.contactRequest = contactRequest;
+    }
 }
