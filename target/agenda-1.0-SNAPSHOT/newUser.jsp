@@ -22,21 +22,21 @@
     <div class="container">
         <h2> Cadastro de novos usuarios</h2>
         <form action="${linkToUserRegister}" method="post">
-            <div class="form-group">
-                <label for="usr">Nome:</label>
-                <input type="text" class="form-control" id="usr" name="username">
+            <div class="row mb-3">
+                <label for="usr" class="col-sm-2 col-form-label">Nome:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="usr" name="username">
+                </div>
+                <label for="mail" class="col-sm-2 col-form-label">Email:</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="mail" name="email">
+                </div>
+                <label for="pwd" class="col-sm-2 col-form-label">Password: </label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="pwd" name="password">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="mail">Email:</label>
-                <input type="email" class="form-control" id="mail" name="email">
-            </div>
-            <div class="form-group">
-                <label for="pwd">Password: </label>
-                <input type="password" class="form-control" id="pwd" name="password">
-            </div>
-            <div>
-                <button type="submit">Registrar</button>
-            </div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
     </div>
 </body>

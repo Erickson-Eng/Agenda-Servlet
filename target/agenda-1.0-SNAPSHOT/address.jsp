@@ -22,7 +22,7 @@
                 <p> Endereços cadastrados do ${contact.name} </p>
             </div>
             <div>
-                <table class="table table-bordered table-hover">
+                <table class="table table-dark table-striped">
                     <thead>
                     <tr>
                         <th>Rua</th>
@@ -52,7 +52,7 @@
                                 <input type="hidden" name="contactId" value="${contact.id}" />
                                 <input type="hidden" name="userId" value="${user.id}" />
                                 <input type="hidden" name="addressId" value="${address.id}">
-                                <button type="button" class="btn btn-dark"><input type="submit" value="excluir"></button>
+                                <button type="button" class="btn"><input type="submit" value="excluir"></button>
                             </form>
                         </td>
                     </tr>

@@ -16,20 +16,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <link href="${pageContext.request.contextPath}/statics/css/index.css" rel="stylesheet">
     <title>Login</title>
 </head>
 <body>
-    <div class="container">
+    <div class="text-center">
+        <h2>Agenda de contatos</h2>
+    </div>
+    <div class="container text-center">
         <form action="${linkToLogin}" method="post">
-            <div class="form-group">
-                <label for="mail">Login:</label>
-                <input type="text" class="form-control" id="mail" name="login" placeholder="Insira o email">
-                <label for="pwd">Password: </label>
-                <input type="password" class="form-control" id="pwd" name="password" placeholder="Insira a senha">
-                <button type="submit">Login</button>
+            <div class="row mb-3">
+                <label for="mail" class="col-sm-2 col-form-label">Login:</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="mail" name="login" placeholder="Insira o email">
+                </div>
+                <label for="pwd" class="col-sm-2 col-form-label">Password: </label>
+                <div class="col-md-10">
+                    <input type="password" class="form-control" id="pwd" name="password" placeholder="Insira a senha">
+                </div>
             </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn" >
+                <a href="${pageContext.request.contextPath}/register" class="link">Registrar</a>
+            </button>
         </form>
-        <button type="submit" ><a href="${pageContext.request.contextPath}/register">Registrar</a></button>
     </div>
 </body>
 </html>

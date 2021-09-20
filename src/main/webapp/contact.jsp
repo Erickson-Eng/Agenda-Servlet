@@ -13,6 +13,9 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <link href="${pageContext.request.contextPath}/statics/css/contact.css" rel="stylesheet">
+
     <title>Title</title>
 </head>
     <div class="container">
@@ -20,7 +23,7 @@
             <h2>Contatos</h2>
         </div>
         <div>
-            <table class="table table-bordered table-hover">
+            <table class="table table-dark table-striped">
                 <thead>
                 <tr>
                     <th>Nome</th>
@@ -37,21 +40,29 @@
                         <td>${contact.name}</td>
                         <td>${contact.rg}</td>
                         <td>${contact.cpf}</td>
-                        <td><a href="/agenda/address?contactId=${contact.id}&userId=${user.id}">Endereços</a></td>
-                        <td><a href="/agenda/editContact?contactId=${contact.id}&userId=${user.id}">Editar</a></td>
+                        <td>
+                            <button type="button" class="btn btn-link">
+                                <a href="/agenda/address?contactId=${contact.id}&userId=${user.id}" >Endereços</a>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-link">
+                                <a href="/agenda/editContact?contactId=${contact.id}&userId=${user.id}" >Editar</a>
+                            </button>
+                        </td>
                         <td>
                             <form action="${linkToContactDeleteServlet}" method="post">
                                 <input type="hidden" name="contactId" value="${contact.id}" />
                                 <input type="hidden" name="userId" value="${user.id}" />
-                                <button type="button" class="btn btn-dark"><input type="submit" value="excluir"></button>
+                                <button type="button" class="btn"><input type="submit" value="excluir"></button>
                             </form>
                         </td>
                     </tbody>
                 </c:forEach>
             </table>
-            <div>
+            <div class="buttons">
+                <button type="button" class="btn btn-dark"><a href="/agenda/">Sair</a></button>
                 <button type="button" class="btn btn-dark"><a href="/agenda/newContact?userId=${user.id}">Adicionar</a></button>
-                <button type="button" class="btn btn-light"><a href="/agenda/">Sair</a></button>
             </div>
         </div>
     </div>
