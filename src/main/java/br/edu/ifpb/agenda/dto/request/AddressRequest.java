@@ -11,7 +11,8 @@ import lombok.*;
 @Builder
 public class AddressRequest {
 
-
+    @Setter
+    private Integer id;
     private String street;
     private Integer number;
     private String complement;
@@ -19,6 +20,7 @@ public class AddressRequest {
     private String cep;
     private String city;
     private String state;
+
 
     private ContactRequest contactRequest;
 

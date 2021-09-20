@@ -20,15 +20,34 @@ public class AddressDAO {
     public void save(AddressRequest request){
         Address entity = addressMapper.INSTANCE.toModel(request);
         try {
-            em.getTransaction().begin();
-            em.persist(entity);
-            em.getTransaction().commit();
+            if (entity.getId() == null){
+                em.getTransaction().begin();
+                em.persist(entity);
+                em.getTransaction().commit();
+            }else {
+                em.getTransaction().begin();
+                em.merge(entity);
+                em.getTransaction().commit();
+            }
         }catch (Exception e){
             if (em.isOpen()){
                 em.getTransaction().rollback();
             }
         }
     }
+    public void update(AddressRequest request) {
+        Address entity = addressMapper.INSTANCE.toModel(request);
+        try {
+            em.getTransaction().begin();
+            em.merge(entity);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.isOpen()) {
+                em.getTransaction().rollback();
+            }
+        }
+    }
+
 
     public List<AddressResponse> findByIdUContact(Integer id) {
         String consult = "select a from Address a where a.contact.id = :id";
@@ -53,4 +72,12 @@ public class AddressDAO {
         em.remove(address);
         em.getTransaction().commit();
     }
+
+    public AddressResponse findById(Integer id) {
+        String consult = "select c from Address c where c.id = :id";
+        TypedQuery<Address> query = em.createQuery(consult,Address.class)
+                .setParameter("id", id);
+        return addressMapper.INSTANCE.toDTO(query.getSingleResult());
+    }
 }
+

@@ -11,32 +11,32 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>Edição de contato</title>
 </head>
 <body>
-    <h1> Edição de contato</h1>
     <div class="container">
+        <h2>Contato</h2>
         <form action="${linkToEditContact}" method="post">
-            <div>
-                <h2>Contato</h2>
-                <div class="form-group">
-                    <label for="usr">Nome:</label>
+            <div class="row mb-3">
+                <label for="usr" class="col-sm-2 col-form-label">Nome:</label>
+                <div class="col-sm-10">
                     <input type="text" class="form-control" id="usr" name="name" value="${contact.name}">
                 </div>
-                <div class="form-group">
-                    <label for="rg">RG:</label>
+                <label for="rg" class="col-sm-2 col-form-label">RG:</label>
+                <div c class="col-sm-4">
                     <input type="text" class="form-control" id="rg" name="rg" value="${contact.rg}">
                 </div>
-                <div class="form-group">
-                    <label for="cpf">CPF: </label>
+                <label for="cpf" class="col-sm-2 col-form-label">CPF: </label>
+                <div  class="col-sm-4">
                     <input type="text" class="form-control" id="cpf" name="cpf" value="${contact.cpf}">
                     <input type="hidden" class="form-control" id="contactId" name="contactId" value="${contact.id}">
                     <input type="hidden" class="form-control" id="userId" name="userId" value="${user.id}">
                 </div>
                 <div>
-                    <button type="submit">Atualizar</button>
+                    <button type="submit" class="btn btn-primary">Atualizar</button>
                 </div>
-
             </div>
         </form>
     </div>

@@ -1,6 +1,7 @@
 package br.edu.ifpb.agenda.dto.mapper;
 
 import br.edu.ifpb.agenda.dto.request.ContactRequest;
+import br.edu.ifpb.agenda.dto.request.ContactRequest.ContactRequestBuilder;
 import br.edu.ifpb.agenda.dto.response.ContactResponse;
 import br.edu.ifpb.agenda.dto.response.ContactResponse.ContactResponseBuilder;
 import br.edu.ifpb.agenda.dto.response.UserResponse;
@@ -11,7 +12,7 @@ import org.mapstruct.factory.Mappers;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-09-19T22:18:34-0300",
+    date = "2021-09-19T23:06:06-0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.12 (Oracle Corporation)"
 )
 public class ContactMapperImpl implements ContactMapper {
@@ -27,6 +28,7 @@ public class ContactMapperImpl implements ContactMapper {
         Contact contact = new Contact();
 
         contact.setUser( userResponseToUser( request.getUserResponse() ) );
+        contact.setId( request.getId() );
         contact.setName( request.getName() );
         contact.setCpf( request.getCpf() );
         contact.setRg( request.getRg() );
@@ -66,6 +68,23 @@ public class ContactMapperImpl implements ContactMapper {
         contact.setRg( response.getRg() );
 
         return contact;
+    }
+
+    @Override
+    public ContactRequest responseToRequest(ContactResponse response) {
+        if ( response == null ) {
+            return null;
+        }
+
+        ContactRequestBuilder contactRequest = ContactRequest.builder();
+
+        contactRequest.id( response.getId() );
+        contactRequest.name( response.getName() );
+        contactRequest.cpf( response.getCpf() );
+        contactRequest.rg( response.getRg() );
+        contactRequest.userResponse( response.getUserResponse() );
+
+        return contactRequest.build();
     }
 
     protected User userResponseToUser(UserResponse userResponse) {
