@@ -4,7 +4,6 @@ import br.edu.ifpb.agenda.dto.mapper.AddressMapper;
 import br.edu.ifpb.agenda.dto.request.AddressRequest;
 import br.edu.ifpb.agenda.dto.response.AddressResponse;
 import br.edu.ifpb.agenda.entities.Address;
-import br.edu.ifpb.agenda.entities.Contact;
 import br.edu.ifpb.agenda.utils.JPAUtil;
 
 import javax.persistence.EntityManager;
@@ -20,17 +19,17 @@ public class AddressDAO {
     public void save(AddressRequest request){
         Address entity = addressMapper.INSTANCE.toModel(request);
         try {
-            if (entity.getId() == null){
+            if (entity.getId() == null) {
                 em.getTransaction().begin();
                 em.persist(entity);
                 em.getTransaction().commit();
-            }else {
+            } else {
                 em.getTransaction().begin();
                 em.merge(entity);
                 em.getTransaction().commit();
             }
-        }catch (Exception e){
-            if (em.isOpen()){
+        } catch (Exception e) {
+            if (em.isOpen()) {
                 em.getTransaction().rollback();
             }
         }

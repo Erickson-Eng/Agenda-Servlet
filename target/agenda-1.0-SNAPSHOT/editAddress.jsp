@@ -15,7 +15,7 @@
   </head>
   <body>
   <div class="container">
-    <h2>Endereço</h2>
+    <h2>Atualização de endereço</h2>
     <form action="${linkToEditAddress}" method="post">
       <div class="row mb-3">
         <label for="rua" class="col-sm-2 col-form-label">Rua:</label>

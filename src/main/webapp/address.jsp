@@ -60,8 +60,9 @@
                         </td>
                     </tr>
                     </tbody>
+                    </c:forEach>
                 </table>
-                </c:forEach>
+
             </div>
 
         </div>
