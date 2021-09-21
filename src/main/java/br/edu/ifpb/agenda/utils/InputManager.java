@@ -6,11 +6,11 @@ import java.util.regex.Pattern;
 public class InputManager {
 
     public static boolean validateUsername( String name){
-        return name.matches("[a-z]{4,20}");
+        return name.matches("[A-z]{4,20}");
     }
 
     public static boolean validateName(String obj){
-        String expression = "^[\\w'\\s\\-,.]+[^0-9_!¡?÷?¿/\\\\+=@#$%ˆ&*(){}|~<>;:]{2,}$";
+        String expression = "^[\\w'\\s\\-,.]+[^0-9_!¡?÷?¿/\\\\+=@#$%ˆ&*(){}|~<>;:]*$";
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(obj);
         return matcher.matches();
