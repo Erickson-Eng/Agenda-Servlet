@@ -21,7 +21,7 @@
 
 DROP TABLE IF EXISTS `address`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `address` (
   `id` int NOT NULL AUTO_INCREMENT,
   `cep` varchar(255) DEFAULT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `address` (
   PRIMARY KEY (`id`),
   KEY `FK660ac8r9vntokuyh6agtj8pkh` (`contact_id`),
   CONSTRAINT `FK660ac8r9vntokuyh6agtj8pkh` FOREIGN KEY (`contact_id`) REFERENCES `contact` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
-INSERT INTO `address` VALUES (3,'58415-563','Campina grande','casa','Josefa',2588,'PB','antonio',2),(4,NULL,'Campina grande','casa','JosÃ© pinheiro',254,'PB','antonio',3),(6,NULL,'Campina grande','casa','Novo Cruzeiro',254,'PB','antonio',2);
+INSERT INTO `address` VALUES (3,'58415-563','Campina grande','casa','Josefa',2588,'PB','antonio',2),(6,NULL,'Campina grande','casa','Novo Cruzeiro',254,'PB','antonio',2),(7,'58432-300','Campina Grande','Escola','Dinamerica',999,'PB','Rua ifpb',4),(10,'58415-563','Campina grande','','Novo cruzeiro',254,'PB','rua antonio cirilo gomes',6),(12,NULL,'Campina grande','casa','novo cruzeiro',254,'PB','antonio',8),(13,'58432-300','Campina Grande','Escola','novo cruzeiro',999,'PB','Rua ifpb',8),(14,'58415-563','Campina Grande','apartamento','Dinamerica',123,'PB','Rua normal',8);
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,7 +54,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `contact`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `contact` (
   `id` int NOT NULL AUTO_INCREMENT,
   `cpf` varchar(255) DEFAULT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE `contact` (
   PRIMARY KEY (`id`),
   KEY `FKe07k4jcfdophemi6j1lt84b61` (`user_id`),
   CONSTRAINT `FKe07k4jcfdophemi6j1lt84b61` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,7 +73,7 @@ CREATE TABLE `contact` (
 
 LOCK TABLES `contact` WRITE;
 /*!40000 ALTER TABLE `contact` DISABLE KEYS */;
-INSERT INTO `contact` VALUES (2,'123.123.123-49','Wenderson Everton','1.123.123',1),(3,'123.321.123-12','erickson','3.800.311',1);
+INSERT INTO `contact` VALUES (2,'123.123.123-49','Wenderson Everton','1.123.123',1),(4,'132.123.456-58','Thallys','1.123.147',1),(6,'123.123.123-12','Wenderson Everton Rodrigues','3.800.311',2),(8,'103.313.344-25','erickson','3.800.311',1);
 /*!40000 ALTER TABLE `contact` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,7 +83,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `email` varchar(255) DEFAULT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_ob8kqyqqgmefl0aco34akdtpe` (`email`),
   UNIQUE KEY `UK_sb8bbouer5wak8vyiiy4pf2bx` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,13 +101,9 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'erickson@gmail.com','Erick123*','erickson');
+INSERT INTO `user` VALUES (1,'erickson@gmail.com','Erick123*','erickson'),(2,'danilo@gmail.com','Danilo123*','danilo wagner'),(3,'wend@gmail.com','Wend1231*','Wende'),(6,'usernovo@gmail.com','User123*','Usernovo'),(8,'cellashtulio@outlook.com','123456Er*','tulio');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'agenda'
---
 
 --
 -- Dumping routines for database 'agenda'
@@ -122,4 +118,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-19 23:57:52
+-- Dump completed on 2021-09-28 13:07:34
