@@ -13,10 +13,11 @@ import java.util.stream.Collectors;
 
 public class AddressDAO {
 
-    private final EntityManager em = JPAUtil.getEntityManager();
+//    private final EntityManager em = JPAUtil.getEntityManager();
     private AddressMapper addressMapper;
 
     public void save(AddressRequest request){
+        EntityManager em = JPAUtil.getEntityManager();
         Address entity = addressMapper.INSTANCE.toModel(request);
         try {
             if (entity.getId() == null) {
@@ -32,9 +33,12 @@ public class AddressDAO {
             if (em.isOpen()) {
                 em.getTransaction().rollback();
             }
+        } finally {
+            em.close();
         }
     }
     public void update(AddressRequest request) {
+        EntityManager em = JPAUtil.getEntityManager();
         Address entity = addressMapper.INSTANCE.toModel(request);
         try {
             em.getTransaction().begin();
@@ -44,17 +48,22 @@ public class AddressDAO {
             if (em.isOpen()) {
                 em.getTransaction().rollback();
             }
+        } finally {
+            em.close();
         }
     }
 
 
     public List<AddressResponse> findByIdUContact(Integer id) {
+        EntityManager em = JPAUtil.getEntityManager();
         String consult = "select a from Address a where a.contact.id = :id";
         TypedQuery<Address> query = em
                 .createQuery(consult, Address.class)
                 .setParameter("id",id)
                 .setMaxResults(20);
-        return query.getResultList()
+
+        List<Address> addressList = query.getResultList();
+        return addressList
                 .stream()
                 .map(addressMapper.INSTANCE::toDTO)
                 .collect(Collectors.toList());
@@ -62,6 +71,7 @@ public class AddressDAO {
     }
 
     public void deleteById(int id) {
+        EntityManager em = JPAUtil.getEntityManager();
         String consult = "select c from Address c where c.id = :id";
         TypedQuery<Address> query = em
                 .createQuery(consult, Address.class)
@@ -73,10 +83,13 @@ public class AddressDAO {
     }
 
     public AddressResponse findById(Integer id) {
+        EntityManager em = JPAUtil.getEntityManager();
         String consult = "select c from Address c where c.id = :id";
         TypedQuery<Address> query = em.createQuery(consult,Address.class)
                 .setParameter("id", id);
-        return addressMapper.INSTANCE.toDTO(query.getSingleResult());
+        Address obj = query.getSingleResult();
+        em.close();
+        return addressMapper.INSTANCE.toDTO(obj);
     }
 }
 

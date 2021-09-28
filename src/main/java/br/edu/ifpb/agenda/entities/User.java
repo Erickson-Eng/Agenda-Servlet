@@ -35,7 +35,7 @@ public class User implements Serializable {
     @Column(unique = true)
     private String email;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private List<Contact> contactList = new ArrayList<>();
 
     @Override

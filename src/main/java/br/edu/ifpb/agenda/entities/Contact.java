@@ -24,8 +24,9 @@ public class Contact implements Serializable {
     private String cpf;
     private String rg;
 
+
     @ManyToOne
     private User user;
-    @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "contact", cascade = CascadeType.ALL)
     private List<Address> addressList = new ArrayList<>();
 }

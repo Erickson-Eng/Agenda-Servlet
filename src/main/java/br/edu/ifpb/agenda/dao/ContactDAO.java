@@ -13,10 +13,11 @@ import java.util.stream.Collectors;
 
 public class ContactDAO {
 
-    private final EntityManager em = JPAUtil.getEntityManager();
+//    private final EntityManager em = JPAUtil.getEntityManager();
     private ContactMapper contactMapper;
 
     public void save(ContactRequest request){
+        EntityManager em = JPAUtil.getEntityManager();
         Contact entity = contactMapper.INSTANCE.toModel(request);
         try {
             em.getTransaction().begin();
@@ -26,10 +27,13 @@ public class ContactDAO {
             if (em.isOpen()){
                 em.getTransaction().rollback();
             }
+        }finally {
+            em.close();
         }
     }
 
     public void update(ContactResponse response){
+        EntityManager em = JPAUtil.getEntityManager();
         Contact entity = contactMapper.INSTANCE.dtoToModel(response);
         try{
             em.getTransaction().begin();
@@ -38,16 +42,20 @@ public class ContactDAO {
         }catch (Exception e){
             if (em.isOpen())
                 em.getTransaction().rollback();
+        }finally {
+            em.close();
         }
     }
 
     public List<ContactResponse> listAll(Integer id){
+        EntityManager em = JPAUtil.getEntityManager();
         String consult = "select c from Contact c where c.user.id = :id";
         TypedQuery<Contact> query = em
                 .createQuery(consult, Contact.class)
                 .setParameter("id", id)
                 .setMaxResults(20);
         List<Contact> contactList = query.getResultList();
+        em.close();
         return contactList
                 .stream()
                 .map(contactMapper.INSTANCE::toDTO)
@@ -55,17 +63,22 @@ public class ContactDAO {
     }
 
     public ContactResponse findById(Integer id){
+        EntityManager em = JPAUtil.getEntityManager();
         String consult = "select c from Contact c where c.id = :id";
         TypedQuery<Contact> query = em.createQuery(consult, Contact.class).setParameter("id",id);
-        return contactMapper.INSTANCE.toDTO(query.getSingleResult());
+        Contact contact = query.getSingleResult();
+        em.close();
+        return contactMapper.INSTANCE.toDTO(contact);
     }
 
     public void delete(Integer id) {
+        EntityManager em = JPAUtil.getEntityManager();
         String consult = "select c from Contact c where c.id = :id";
         TypedQuery<Contact> query = em.createQuery(consult, Contact.class).setParameter("id",id);
         Contact contact = query.getSingleResult();
         em.getTransaction().begin();
         em.remove(contact);
         em.getTransaction().commit();
+        em.close();
     }
 }
